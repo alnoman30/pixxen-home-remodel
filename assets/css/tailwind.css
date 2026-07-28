@@ -1,50 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Koulen&display=swap');
 
-@font-face {
-    font-family: 'Steelfish';
-    src: url('../fonts/Steelfish-BoldItalic.ttf') format('truetype');
-    font-weight: bold;
-    font-style: italic;
-    font-display: swap;
-}
 
 @font-face {
     font-family: 'Steelfish';
     src: url('../fonts/Steelfish-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Steelfish';
-    src: url('../fonts/Steelfish-ExtraBold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Steelfish';
-    src: url('../fonts/Steelfish-ExtraBoldItalic.ttf') format('truetype');
-    font-weight: bold;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Steelfish';
-    src: url('../fonts/Steelfish-Outline.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Steelfish';
-    src: url('../fonts/Steelfish-Italic.ttf') format('truetype');
-    font-weight: normal;
-    font-style: italic;
     font-display: swap;
 }
 
@@ -83,6 +44,10 @@
     .container {
         padding-inline: 16px;
     }
+}
+
+.font-koulen {
+    font-family: "Koulen", sans-serif;
 }
 
 .font-steelfish {
@@ -882,260 +847,68 @@ html.lenis body {
 
 
 
+/* Home Remodeling CSS start from here */
 
 
-
-/* banner section start */
-
-.background-banner {
-    background-image: url(../images/wedding-banner-bg.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-
-.local-market-section {
-    background-color: #fff;
-    background-image: url(../images/wedding-banner-bg.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-/* banner section end */
-
-
-
-/* Petgrooming css */
-
-
-/* Petgrooming testimonial Mobile arrows */
-@media (max-width: 1024px) {
-
-    .chiropractic-arrows {
-        position: absolute;
-        bottom: -60px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        z-index: 20;
-        pointer-events: none;
-    }
-
-    .chiropractic-arrow {
-        position: static !important;
-        transform: none !important;
-        width: 42px;
-        height: 42px;
-        border-radius: 9999px;
-        background: #fff;
-        border: 1px solid #E65689;
-        color: #E65689;
-        /* SVG color */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        pointer-events: auto;
-        transition: all .3s ease;
-    }
-
-    .chiropractic-arrow svg {
-        width: 18px;
-        height: 18px;
-        fill: currentColor;
-    }
-
-    .chiropractic-arrow:hover {
-        background: #E65689;
-        border-color: #E65689;
-        color: #fff;
-        /* SVG becomes white */
-    }
-
-}
-
-
-
-
-/*  */
-.chiro-btn {
-    --height: 68px;
-    --text-height: 24px;
-
-    display: inline-flex;
-    height: var(--height);
-    overflow: hidden;
-    border-radius: 18px;
-    background: #E65689;
-}
-
-
-/* Text Wrapper */
-.chiro-btn-text-wrap {
+.homeremodel-cta-link{
     position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    padding: 0 32px;
     overflow: hidden;
-    height: var(--text-height);
-    min-width: 300px;
-    align-self: center;
+    background: #FFCC00;
+    transition: background-color .35s ease;
 }
 
+.homeremodel-cta-link:hover{
+    background:#FFB800;
+}
 
-/* Text */
-.chiro-btn-text {
-    position: absolute;
-    inset: 0;
+.homeremodel-cta-text{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    height: 18px; /* text height */
+    z-index: 2;
+}
 
-    display: flex;
-    align-items: center;
-    height: var(--text-height);
-
-    padding: 0 32px;
-
-    color: #fff;
-    font: 700 18px/1 Archivo, sans-serif;
+.homeremodel-cta-layer{
+    display: block;
+    font-family: inherit;
+    font-size: .875rem;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: .05em;
     text-transform: uppercase;
     white-space: nowrap;
-
-    transition: transform .45s cubic-bezier(.22,.61,.36,1);
+    color: #003658;
 }
 
-
-.chiro-btn-text-next {
-    transform: translateY(100%);
-}
-
-
-.chiro-btn:hover .chiro-btn-text-current {
-    transform: translateY(-100%);
-}
-
-
-.chiro-btn:hover .chiro-btn-text-next {
-    transform: translateY(0);
-}
-
-
-
-/* Icon */
-.chiro-btn-icon {
-    width: 68px;
-
-    display: grid;
-    place-items: center;
-
-    overflow: hidden;
-    background: #6F3E76;
-}
-
-
-
-.chiro-btn-icon-wrap {
+.homeremodel-text-base{
     position: relative;
-
-    width: 32px;
-    height: 32px;
-
-    overflow: hidden;
 }
 
-
-
-/* Arrow */
-.chiro-btn-arrow {
+.homeremodel-text-hover{
     position: absolute;
-
-    width: 32px;
-    height: 32px;
-
-    color: #E65689;
-
-    transition:
-        transform .45s cubic-bezier(.22,.61,.36,1),
-        color .3s ease;
+    left: 0;
+    top: 100%;
+    width: 100%;
 }
 
-
-.chiro-btn:hover .chiro-btn-arrow {
-    color: #fff;
+.homeremodel-cta-shine{
+    position:absolute;
+    top:0;
+    left:-40%;
+    width:30%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.65),
+        transparent
+    );
+    transform:skewX(-25deg);
+    pointer-events:none;
 }
-
-
-.chiro-btn-arrow:first-child {
-    transform: translateX(0);
-}
-
-
-.chiro-btn-arrow:last-child {
-    transform: translateX(-150%);
-}
-
-
-.chiro-btn:hover .chiro-btn-arrow:first-child {
-    transform: translateX(150%);
-}
-
-
-.chiro-btn:hover .chiro-btn-arrow:last-child {
-    transform: translateX(0);
-}
-
-
-
-/* Mobile */
-@media(max-width:640px){
-
-    .chiro-btn {
-        --height: 46px;
-        --text-height: 16px;
-
-        border-radius: 14px;
-    }
-
-
-    .chiro-btn-text-wrap {
-        min-width: 210px;
-    }
-
-
-    .chiro-btn-text {
-        padding: 0 20px;
-
-        font-size: 13px;
-    }
-
-
-    .chiro-btn-icon {
-        width: 46px;
-    }
-
-
-    .chiro-btn-icon-wrap {
-        width: 24px;
-        height: 24px;
-    }
-
-
-    .chiro-btn-arrow {
-        width: 24px;
-        height: 24px;
-    }
-}
-
-/* chiropractic faq  */
-.chiropractic-faq-item.active {
-  background-color: #002152;
-}
-
-.chiropractic-heading-mask {
-  overflow: hidden;
-}
-
-.chiropractic-heading-mask h1,
-.chiropractic-heading-mask h2 {
-  will-change: transform;
-}
-
