@@ -551,7 +551,7 @@ nav {
 /* ─── TOP PANEL (menu content) ─── */
 .menu-top {
     flex: 1;
-    background: #002152;
+    background: #1E6C9E;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -564,7 +564,7 @@ nav {
 .menu-bottom {
     height: 180px;
     border-top: 1px solid var(--color-dakr2);
-    background: linear-gradient(180deg, #002152 0%, #E65689 100%);
+    background: linear-gradient(180deg, #1E6C9E 0%, #FCD907 100%);
     display: flex;
     align-items: end;
     justify-content: center;
@@ -651,7 +651,7 @@ nav {
 }
 
 .nav-col-title {
-    color: #E65689;
+    color: #FCD907;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
@@ -683,7 +683,7 @@ nav {
 }
 
 .nav-col ul li a:hover {
-    color: #95B0D8;
+    color: #FF6202;
 }
 
 /* ─── BOTTOM LOGO ─── */
@@ -850,52 +850,7 @@ html.lenis body {
 /* Home Remodeling CSS start from here */
 
 
-.homeremodel-cta-link{
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 56px;
-    padding: 0 32px;
-    overflow: hidden;
-    background: #FFCC00;
-    transition: background-color .35s ease;
-}
 
-.homeremodel-cta-link:hover{
-    background:#FFB800;
-}
-
-.homeremodel-cta-text{
-    position: relative;
-    display: block;
-    overflow: hidden;
-    height: 18px; /* text height */
-    z-index: 2;
-}
-
-.homeremodel-cta-layer{
-    display: block;
-    font-family: inherit;
-    font-size: .875rem;
-    font-weight: 700;
-    line-height: 18px;
-    letter-spacing: .05em;
-    text-transform: uppercase;
-    white-space: nowrap;
-    color: #003658;
-}
-
-.homeremodel-text-base{
-    position: relative;
-}
-
-.homeremodel-text-hover{
-    position: absolute;
-    left: 0;
-    top: 100%;
-    width: 100%;
-}
 
 .homeremodel-cta-shine{
     position:absolute;
@@ -911,4 +866,62 @@ html.lenis body {
     );
     transform:skewX(-25deg);
     pointer-events:none;
+}
+
+@media (max-width: 1024px) {
+
+    .home-remodel-arrows {
+        position: absolute;
+        bottom: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        z-index: 20;
+        pointer-events: none;
+    }
+
+    .home-remodel-arrow {
+        position: static !important;
+        transform: none !important;
+        width: 42px;
+        height: 42px;
+        border-radius: 9999px;
+        background: #fff;
+        border: 1px solid #FF6202;
+        color: #FF6202;
+        /* SVG color */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: auto;
+        transition: all .3s ease;
+    }
+
+    .home-remodel-arrow svg {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+    }
+
+    .home-remodel-arrow:hover {
+        background: #FF6202;
+        border-color: #FF6202;
+        color: #fff;
+        /* SVG becomes white */
+    }
+
+}
+
+.home-remodel-faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.home-remodel-faq-content.home-remodel-active {
+  max-height: 300px; /* Increase if needed */
 }

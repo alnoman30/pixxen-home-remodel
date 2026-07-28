@@ -1750,23 +1750,116 @@ document.querySelectorAll(".Home-remodeling-magnet-item").forEach((item) => {
     });
 });
 
+// Home remodeling Marquee
+document.addEventListener('DOMContentLoaded', () => {
+    const specialtiesSliderEl = document.getElementById('specialties-slider');
+    if (!specialtiesSliderEl || typeof Splide === 'undefined') return;
+
+    const specialtiesSplide = new Splide('#specialties-slider', {
+        type: 'loop',
+        drag: 'free',
+        focus: 'center',
+        perPage: 8,
+        gap: '0px',
+        arrows: false,
+        pagination: false,
+        autoScroll: {
+            speed: 1,
+            pauseOnHover: true,
+            pauseOnFocus: false
+        },
+        breakpoints: {
+            1280: { perPage: 8 },
+            1024: { perPage: 6 },
+            768: { perPage: 5 },
+            640: { perPage: 3 }
+        }
+    });
+
+    if (window.splide && window.splide.Extensions) {
+        specialtiesSplide.mount(window.splide.Extensions);
+    } else {
+        specialtiesSplide.mount();
+    }
+});
+
+
+// Home remodel niche 
+
+document.querySelectorAll('.home-remodeling-spacification').forEach(row => {
+  const img = row.querySelector('img');
+  const base = gsap.getProperty(img, "rotation"); // or set manually
+  row.addEventListener('mouseenter', () => gsap.to(img, { rotation: -5, duration: 0.5, ease: "power2.out" }));
+  row.addEventListener('mouseleave', () => gsap.to(img, { rotation: base, duration: 0.5, ease: "power2.out" }));
+});
 
 
 
-// 
-// Chiropractic project showcase animation cursor follow
+// Home remodel CTA BTN
+document.addEventListener("DOMContentLoaded", () => {
+  const buttons = document.querySelectorAll(".homeremodel-cta-link");
+
+  if (!buttons.length) return;
+
+  buttons.forEach((button) => {
+    const shine = button.querySelector(".homeremodel-cta-shine");
+    const base = button.querySelector(".homeremodel-text-up");
+    const hover = button.querySelector(".homeremodel-text-bottom");
+
+    if (!shine || !base || !hover) return;
+
+    const tl = gsap.timeline({
+      paused: true,
+      defaults: {
+        ease: "power3.out"
+      }
+    });
+
+    tl.to(base, {
+      yPercent: -100,
+      duration: 0.35
+    }, 0)
+
+    .to(hover, {
+      yPercent: -100,
+      duration: 0.35
+    }, 0)
+
+    .fromTo(shine,
+      {
+        xPercent: -250
+      },
+      {
+        xPercent: 520,
+        duration: 0.85,
+        ease: "power2.out"
+      },
+      0
+    );
+
+    button.addEventListener("mouseenter", () => {
+      tl.play();
+    });
+
+    button.addEventListener("mouseleave", () => {
+      tl.reverse();
+    });
+  });
+});
+
+
+// Home remodel project showcase
 document.addEventListener("DOMContentLoaded", () => {
 
     if (!window.gsap) return;
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const grid = document.getElementById("chiropractic-works-grid");
+    const grid = document.getElementById("home-remodel-works-grid");
     if (!grid) return;
 
-
     // Cards Reveal
-    gsap.from(grid.querySelectorAll(".chiropractic-work-card"), {
+    gsap.from(grid.querySelectorAll(".home-remodel-work-card"), {
         y: 60,
         opacity: 0,
         duration: 0.9,
@@ -1780,12 +1873,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // View Work Cursor Animation
-    const medias = [...grid.querySelectorAll(".chiropractic-work-media")];
-
+    const medias = [...grid.querySelectorAll(".home-remodel-work-media")];
 
     medias.forEach((media) => {
 
-        const btn = media.querySelector(".chiropractic-view-work");
+        const btn = media.querySelector(".home-remodel-view-work");
         if (!btn) return;
 
 
@@ -1867,324 +1959,76 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
-// 
+// Home remodel testimonial splide js
 document.addEventListener('DOMContentLoaded', function () {
-    if (document.querySelector('#chiropractic-testimonial-slider')) {
-
-        new Splide('#chiropractic-testimonial-slider', {
-            type: 'loop',
-
-            // Desktop
-            perPage: 3,
-            perMove: 1,
-            gap: '8px',
-
-            arrows: false, // Hide arrows on desktop
-            pagination: false,
-
-            autoScroll: {
-                speed: 1.2,
-                pauseOnHover: true,
-                pauseOnFocus: false,
-            },
-
-            classes: {
-                arrows: 'splide__arrows chiropractic-arrows',
-                arrow: 'splide__arrow chiropractic-arrow',
-                prev: 'splide__arrow--prev chiropractic-arrow-prev',
-                next: 'splide__arrow--next chiropractic-arrow-next',
-            },
-
-            breakpoints: {
-                1024: {
-                    perPage: 2,
-                    gap: '8px',
-                    arrows: true, // Show arrows on tablet
-                },
-
-                768: {
-                    perPage: 1,
-                    gap: '6px',
-                    arrows: true, // Show arrows on mobile
-                    autoScroll: false,
-                },
-            },
-
-        }).mount(window.splide.Extensions);
-    }
-});
-
-// chiropractic FAQ JS
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const faqItems = document.querySelectorAll(".chiropractic-faq-item");
-
-    faqItems.forEach((item) => {
-
-        const trigger = item;
-        const wrapper = item.querySelector(".chiropractic-faq-answer-wrapper");
-        const icon = item.querySelector(".chiropractic-faq-icon");
-
-
-        gsap.set(wrapper, {
-            height: 0
-        });
-
-
-        trigger.addEventListener("click", () => {
-
-            const isOpen = item.classList.contains("active");
-
-
-            // Close all other FAQs
-            faqItems.forEach((other) => {
-
-                if (other !== item) {
-
-                    const otherWrapper = other.querySelector(".chiropractic-faq-answer-wrapper");
-                    const otherIcon = other.querySelector(".chiropractic-faq-icon");
-
-                    other.classList.remove("active");
-
-                    gsap.to(otherWrapper, {
-                        height: 0,
-                        duration: 0.35,
-                        ease: "power2.inOut"
-                    });
-
-                    gsap.to(otherIcon, {
-                        rotate: 0,
-                        duration: 0.2,
-                        ease: "power2.out"
-                    });
-
-                }
-
-            });
-
-
-            // Toggle current FAQ
-            if (isOpen) {
-
-                item.classList.remove("active");
-
-                gsap.to(wrapper, {
-                    height: 0,
-                    duration: 0.35,
-                    ease: "power2.inOut"
-                });
-
-                gsap.to(icon, {
-                    rotate: 0,
-                    duration: 0.2,
-                    ease: "power2.out"
-                });
-
-
-            } else {
-
-                item.classList.add("active");
-
-                gsap.to(wrapper, {
-                    height: wrapper.scrollHeight,
-                    duration: 0.45,
-                    ease: "power3.out"
-                });
-
-                gsap.to(icon, {
-                    rotate: 45,
-                    duration: 0.2,
-                    ease: "power2.out"
-                });
-
-            }
-
-        });
-
-    });
-
-});
-
-
-
-
-// chiropractic image -parallax
-gsap.utils.toArray(".chiro-parallax img").forEach(img => {
-
-    gsap.fromTo(img,
-        { y: "-10%" },
-        {
-            y: "10%",
-            ease: "none",
-            scrollTrigger: {
-                trigger: img.closest(".chiro-parallax"),
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1.5
-            }
-        }
-    );
-
-});
-
-// Chiropractic statistic counter
-document.addEventListener('DOMContentLoaded', () => {
-
-    const counters = document.querySelectorAll('.chiro-counter');
-
-    function formatNum(n, format) {
-        return format === 'comma'
-            ? n.toLocaleString()
-            : n;
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-
-        entries.forEach(entry => {
-
-            if (!entry.isIntersecting) return;
-
-            const el = entry.target;
-
-            if (el.dataset.animated === 'true') return;
-
-            el.dataset.animated = 'true';
-
-            const target = parseInt(el.dataset.target);
-            const suffix = el.dataset.suffix || '';
-            const prefix = el.dataset.prefix || '';
-            const format = el.dataset.format || '';
-
-            const duration = 1800;
-            const steps = 60;
-            const increment = target / steps;
-            const interval = duration / steps;
-
-            let current = 0;
-
-            const timer = setInterval(() => {
-
-                current += increment;
-
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-
-                el.textContent =
-                    prefix +
-                    formatNum(Math.round(current), format) +
-                    suffix;
-
-            }, interval);
-
-            observer.unobserve(el);
-
-        });
-
-    }, {
-        threshold: 0.5
-    });
-
-    counters.forEach(counter => {
-        observer.observe(counter);
-    });
-
-});
-
-
-
-// Home remodeling Marquee
-document.addEventListener('DOMContentLoaded', () => {
-    const specialtiesSliderEl = document.getElementById('specialties-slider');
-    if (!specialtiesSliderEl || typeof Splide === 'undefined') return;
-
-    const specialtiesSplide = new Splide('#specialties-slider', {
-        type: 'loop',
-        drag: 'free',
-        focus: 'center',
-        perPage: 8,
-        gap: '0px',
-        arrows: false,
-        pagination: false,
-        autoScroll: {
-            speed: 1,
-            pauseOnHover: true,
-            pauseOnFocus: false
+  if (document.querySelector('#home-remodel-testimonial-slider')) {
+
+    new Splide('#home-remodel-testimonial-slider', {
+      type: 'loop',
+
+      // Desktop
+      perPage: 3,
+      perMove: 1,
+      gap: '32px',
+
+      arrows: false, // Hide arrows on desktop
+      pagination: false,
+
+      autoScroll: {
+        speed: 1.2,
+        pauseOnHover: true,
+        pauseOnFocus: false,
+      },
+
+      classes: {
+        arrows: 'splide__arrows home-remodel-arrows',
+        arrow: 'splide__arrow home-remodel-arrow',
+        prev: 'splide__arrow--prev home-remodel-arrow-prev',
+        next: 'splide__arrow--next home-remodel-arrow-next',
+      },
+
+      breakpoints: {
+        1024: {
+          perPage: 2,
+          gap: '8px',
+          arrows: true, // Show arrows on tablet
         },
-        breakpoints: {
-            1280: { perPage: 8 },
-            1024: { perPage: 6 },
-            768: { perPage: 5 },
-            640: { perPage: 3 }
-        }
-    });
 
-    if (window.splide && window.splide.Extensions) {
-        specialtiesSplide.mount(window.splide.Extensions);
-    } else {
-        specialtiesSplide.mount();
-    }
+        768: {
+          perPage: 1,
+          gap: '6px',
+          arrows: true, // Show arrows on mobile
+          autoScroll: false,
+        },
+      },
+
+    }).mount(window.splide.Extensions);
+  }
 });
 
 
 // 
+document.querySelectorAll(".home-remodel-faq-btn").forEach((button) => {
+  button.addEventListener("click", () => {
+    const item = button.closest(".home-remodel-faq-item");
+    const content = item.querySelector(".home-remodel-faq-content");
+    const icon = item.querySelector(".home-remodel-faq-icon");
 
+    // Close other items
+    document.querySelectorAll(".home-remodel-faq-item").forEach((faq) => {
+      if (faq !== item) {
+        faq
+          .querySelector(".home-remodel-faq-content")
+          .classList.remove("home-remodel-active");
 
-
-
-
-
-// Home model CTA BTN
-document.addEventListener("DOMContentLoaded", () => {
-  const buttons = document.querySelectorAll(".homeremodel-cta-link");
-
-  if (!buttons.length) return;
-
-  buttons.forEach((button) => {
-    const shine = button.querySelector(".homeremodel-cta-shine");
-    const base = button.querySelector(".homeremodel-text-up");
-    const hover = button.querySelector(".homeremodel-text-bottom");
-
-    if (!shine || !base || !hover) return;
-
-    const tl = gsap.timeline({
-      paused: true,
-      defaults: {
-        ease: "power3.out"
+        faq
+          .querySelector(".home-remodel-faq-icon")
+          .classList.remove("rotate-45");
       }
     });
 
-    tl.to(base, {
-      yPercent: -100,
-      duration: 0.35
-    }, 0)
-
-    .to(hover, {
-      yPercent: -100,
-      duration: 0.35
-    }, 0)
-
-    .fromTo(shine,
-      {
-        xPercent: -250
-      },
-      {
-        xPercent: 520,
-        duration: 0.85,
-        ease: "power2.out"
-      },
-      0
-    );
-
-    button.addEventListener("mouseenter", () => {
-      tl.play();
-    });
-
-    button.addEventListener("mouseleave", () => {
-      tl.reverse();
-    });
+    // Toggle current item
+    content.classList.toggle("home-remodel-active");
+    icon.classList.toggle("rotate-45");
   });
 });
