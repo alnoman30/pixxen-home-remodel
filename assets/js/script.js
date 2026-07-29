@@ -1770,8 +1770,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         breakpoints: {
             1280: { perPage: 8 },
-            1024: { perPage: 6 },
-            768: { perPage: 5 },
+            1024: { perPage: 4 },
+            768: { perPage: 4 },
             640: { perPage: 3 }
         }
     });
