@@ -513,11 +513,17 @@
   .w-40 {
     width: calc(var(--spacing) * 40);
   }
+  .w-44 {
+    width: calc(var(--spacing) * 44);
+  }
   .w-47 {
     width: calc(var(--spacing) * 47);
   }
   .w-47\.5 {
     width: calc(var(--spacing) * 47.5);
+  }
+  .w-54 {
+    width: calc(var(--spacing) * 54);
   }
   .w-auto {
     width: auto;
@@ -1823,6 +1829,11 @@
   .md\:w-60 {
     @media (width >= 48rem) {
       width: calc(var(--spacing) * 60);
+    }
+  }
+  .md\:w-70 {
+    @media (width >= 48rem) {
+      width: calc(var(--spacing) * 70);
     }
   }
   .md\:w-72 {
