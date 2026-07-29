@@ -2007,28 +2007,36 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// 
-document.querySelectorAll(".home-remodel-faq-btn").forEach((button) => {
-  button.addEventListener("click", () => {
-    const item = button.closest(".home-remodel-faq-item");
+// Home remodeling FAQ
+document.addEventListener("DOMContentLoaded", () => {
+  const faqItems = document.querySelectorAll(".home-remodel-faq-item");
+
+  faqItems.forEach((item) => {
+    const header = item.querySelector(".home-remodel-faq-header");
     const content = item.querySelector(".home-remodel-faq-content");
     const icon = item.querySelector(".home-remodel-faq-icon");
 
-    // Close other items
-    document.querySelectorAll(".home-remodel-faq-item").forEach((faq) => {
-      if (faq !== item) {
-        faq
-          .querySelector(".home-remodel-faq-content")
-          .classList.remove("home-remodel-active");
+    // Hide all contents initially
+    content.style.maxHeight = "0px";
+    content.style.overflow = "hidden";
+    content.style.transition = "max-height 0.3s ease";
 
-        faq
-          .querySelector(".home-remodel-faq-icon")
-          .classList.remove("rotate-45");
+    header.addEventListener("click", () => {
+      const isActive = item.classList.contains("active");
+
+      // Close all items
+      faqItems.forEach((faq) => {
+        faq.classList.remove("active");
+        faq.querySelector(".home-remodel-faq-content").style.maxHeight = "0px";
+        faq.querySelector(".home-remodel-faq-icon").style.transform = "rotate(0deg)";
+      });
+
+      // Open clicked item
+      if (!isActive) {
+        item.classList.add("active");
+        content.style.maxHeight = content.scrollHeight + "px";
+        icon.style.transform = "rotate(45deg)";
       }
     });
-
-    // Toggle current item
-    content.classList.toggle("home-remodel-active");
-    icon.classList.toggle("rotate-45");
   });
 });
